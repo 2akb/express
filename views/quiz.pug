@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  //- h1= title
+  h1 #{title}
+  //- p Welcome to #{title}
+  if show
+    form(method='post')
+      p Jaka jest Twoja ulubiona pora roku ?
+      ul 
+        each item in data 
+          li  
+            label=item.title 
+            input(type="radio" name="quiz" value=item._id)
+      input(type="submit" value="Zagłosuj")
+      p Aby zobaczyć wyniki - zagłosuj
+  else 
+    h1 Oddałeś już głos w ankiecie
+    p Wyniki 
+    ul
+      each item in data
+        //- li #{item.title} wynik: #{item.vote} (#{Math.round(item.vote/sum*100)}%)
+        li #{item.title} wynik: #{item.vote} (#{Number(Math.round(item.vote/sum*100 +'e+3') + 'e-3')}%)
+        //- Number(Math.round(1.005 + 'e+2') + 'e-2')
+    p Ilość głosów oddanych: #{sum}
