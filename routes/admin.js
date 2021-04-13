@@ -45,7 +45,7 @@ router.post('/news/add', (req, res) => {
 
   const errors = newsData.validateSync();
 
-  // console.log(errors);
+  // console.log(errors); //
 
   newsData.save(err => {
     // console.log(err);
